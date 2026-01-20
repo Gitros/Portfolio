@@ -1,26 +1,61 @@
+@config "../../tailwind.config.js";
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  height: 100%;
+}
+
+@layer components {
+  .page-bg {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  }
+
+  .card {
+    @apply rounded-3xl border border-slate-200 bg-white shadow-sm
+    dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .muted {
+    @apply text-slate-600 dark:text-slate-300;
+  }
+
+  .btn-primary {
+    @apply rounded-2xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white
+    hover:bg-indigo-700;
+  }
+
+  .btn-ghost {
+    @apply rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800
+    hover:border-indigo-200 hover:text-indigo-700
+    dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes floatGradient {
+  0% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-50%) translateY(18px) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 0.9;
+  }
+}
+
+.gradient-float {
+  animation: floatGradient 12s ease-in-out infinite;
 }
