@@ -17,7 +17,7 @@ function scrollToId(id: string) {
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
-export default function Navbar({ locale }: { locale: Locale }) {
+export default function Navbar({ locale }: Readonly<{ locale: Locale }>) {
   const m = getMessages(locale);
   const [open, setOpen] = useState(false);
 

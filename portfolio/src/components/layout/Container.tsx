@@ -3,7 +3,10 @@ import { cn } from "@/lib/cn";
 
 type Props = { children: ReactNode; className?: string };
 
-export default function Container({ children, className = "" }: Props) {
+export default function Container({
+  children,
+  className = "",
+}: Readonly<Props>) {
   return (
     <div
       className={cn(

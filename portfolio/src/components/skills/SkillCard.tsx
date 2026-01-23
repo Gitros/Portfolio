@@ -6,7 +6,7 @@ import { Clock, Rocket, Award } from "lucide-react";
 
 type Locale = "pl" | "en";
 
-function FactIcon({ kind }: { kind?: "time" | "projects" | "cert" }) {
+function FactIcon({ kind }: Readonly<{ kind?: "time" | "projects" | "cert" }>) {
   if (kind === "time") return <Clock className="h-4 w-4" />;
   if (kind === "projects") return <Rocket className="h-4 w-4" />;
   if (kind === "cert") return <Award className="h-4 w-4" />;
@@ -16,10 +16,10 @@ function FactIcon({ kind }: { kind?: "time" | "projects" | "cert" }) {
 export default function SkillCard({
   skill,
   locale,
-}: {
+}: Readonly<{
   skill: Skill;
   locale: Locale;
-}) {
+}>) {
   const dots = levelDots[skill.level];
   const progress = levelProgress[skill.level];
 

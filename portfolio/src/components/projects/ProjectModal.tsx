@@ -1,18 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
-import { X, Github, Video } from "lucide-react";
+import { X, GithubIcon, Video } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export default function ProjectModal({
   project,
   locale,
   onClose,
-}: {
+}: Readonly<{
   project: Project;
   locale: "pl" | "en";
   onClose: () => void;
-}) {
+}>) {
   // blokada scrolla tła
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -27,22 +27,21 @@ export default function ProjectModal({
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    globalThis.addEventListener("keydown", onKey);
+    return () => globalThis.removeEventListener("keydown", onKey);
   }, [onClose]);
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      role="dialog"
-      aria-modal="true"
+      role="presentation"
       onMouseDown={(e) => {
         // klik w tło zamyka
         if (e.target === e.currentTarget) onClose();
       }}
     >
       {/* overlay */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+      <div className="pointer-events-none absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
       {/* panel */}
       <div
@@ -87,11 +86,9 @@ export default function ProjectModal({
               <a
                 href={project.links.github}
                 target="_blank"
-                className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800
-                           hover:border-indigo-200 hover:text-indigo-700
-                           dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
               >
-                <Github className="h-4 w-4" />
+                <GithubIcon className="h-4 w-4" />
                 Zobacz kod
               </a>
             )}

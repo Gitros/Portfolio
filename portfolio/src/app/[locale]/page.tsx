@@ -1,4 +1,5 @@
 import Container from "@/components/layout/Container";
+import EducationSection from "@/components/sections/EducationSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import type { Locale } from "@/i18n/locales";
@@ -8,9 +9,9 @@ import Image from "next/image";
 
 export default async function Home({
   params,
-}: {
+}: Readonly<{
   params: Promise<{ locale: string }>;
-}) {
+}>) {
   const { locale: localeParam } = await params;
 
   const locale: Locale = isLocale(localeParam) ? (localeParam as Locale) : "pl";
@@ -122,14 +123,7 @@ export default async function Home({
 
       <SkillsSection locale={locale} />
 
-      <section id="education" className="py-14">
-        <Container>
-          <div className="card p-8">
-            <h2 className="text-3xl font-bold">Edukacja</h2>
-            <div className="mt-6 h-48 rounded-2xl bg-slate-50 dark:bg-slate-800/60" />
-          </div>
-        </Container>
-      </section>
+      <EducationSection locale={locale} />
 
       <section id="about" className="py-14">
         <Container>

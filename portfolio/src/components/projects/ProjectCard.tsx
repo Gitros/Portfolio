@@ -6,11 +6,11 @@ export default function ProjectCard({
   project,
   locale,
   onOpen,
-}: {
+}: Readonly<{
   project: Project;
   locale: "pl" | "en";
   onOpen: () => void;
-}) {
+}>) {
   return (
     <button
       onClick={onOpen}

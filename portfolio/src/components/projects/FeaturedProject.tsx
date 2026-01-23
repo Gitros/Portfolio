@@ -6,11 +6,11 @@ export default function FeaturedProject({
   project,
   locale,
   onOpen,
-}: {
+}: Readonly<{
   project: Project;
   locale: "pl" | "en";
   onOpen: () => void;
-}) {
+}>) {
   return (
     <div
       onClick={onOpen}

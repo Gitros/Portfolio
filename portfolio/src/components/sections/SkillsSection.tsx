@@ -27,7 +27,9 @@ const tabInactive =
   "bg-white text-slate-900 border-slate-200 hover:border-indigo-200 hover:text-indigo-700 " +
   "dark:bg-slate-900 dark:text-slate-100 dark:border-slate-800 dark:hover:border-indigo-400 dark:hover:text-indigo-300";
 
-export default function SkillsSection({ locale }: { locale: Locale }) {
+export default function SkillsSection({
+  locale,
+}: Readonly<{ locale: Locale }>) {
   const [active, setActive] = useState<SkillCategoryId>("languages");
 
   const activeCategory = useMemo(
@@ -96,7 +98,10 @@ export default function SkillsSection({ locale }: { locale: Locale }) {
   );
 }
 
-function LegendItem({ label, dots }: { label: string; dots: number }) {
+function LegendItem({
+  label,
+  dots,
+}: Readonly<{ label: string; dots: number }>) {
   return (
     <div className="flex items-center gap-3">
       <div className="flex gap-1.5">
