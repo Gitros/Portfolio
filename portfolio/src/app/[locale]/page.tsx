@@ -1,5 +1,6 @@
 import Container from "@/components/layout/Container";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import SkillsSection from "@/components/sections/SkillsSection";
 import type { Locale } from "@/i18n/locales";
 import { isLocale } from "@/i18n/locales";
 import { getMessages } from "@/i18n/messages";
@@ -119,14 +120,7 @@ export default async function Home({
       {/* PLACEHOLDERS pod sekcje jak w Figmie */}
       <ProjectsSection locale={locale} />
 
-      <section id="skills" className="py-14">
-        <Container>
-          <div className="card p-8">
-            <h2 className="text-3xl font-bold">Umiejętności</h2>
-            <div className="mt-6 h-48 rounded-2xl bg-slate-50 dark:bg-slate-800/60" />
-          </div>
-        </Container>
-      </section>
+      <SkillsSection locale={locale} />
 
       <section id="education" className="py-14">
         <Container>

@@ -30,10 +30,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <header
-      className="sticky top-0 z-50 border-b border-slate-200 bg-slate-50/80 backdrop-blur
-                   dark:border-slate-800 dark:bg-slate-950/70"
-    >
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-slate-50/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/70">
       <Container className="flex h-16 items-center justify-between">
         <Link
           href={`/${locale}`}
@@ -63,18 +60,14 @@ export default function Navbar({ locale }: { locale: Locale }) {
           <Link
             href="https://github.com/"
             target="_blank"
-            className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800
-           hover:border-indigo-200 hover:text-indigo-700
-           dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+            className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
           >
             GitHub
           </Link>
           <Link
             href="https://www.linkedin.com/"
             target="_blank"
-            className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800
-           hover:border-indigo-200 hover:text-indigo-700
-           dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+            className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
           >
             LinkedIn
           </Link>
@@ -82,9 +75,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
 
         <button
           type="button"
-          className="md:hidden rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800
-           hover:border-indigo-200 hover:text-indigo-700
-           dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+          className="md:hidden rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
         >
@@ -104,8 +95,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                     scrollToId(it.id);
                     setOpen(false);
                   }}
-                  className="rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-800 hover:bg-white
-           dark:text-slate-100 dark:hover:bg-slate-900"
+                  className="rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-800 hover:bg-white dark:text-slate-100 dark:hover:bg-slate-900"
                 >
                   {it.label}
                 </button>
@@ -119,9 +109,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                 <Link
                   href="https://github.com/"
                   target="_blank"
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-center text-sm font-medium text-slate-800
-           hover:border-indigo-200 hover:text-indigo-700
-           dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-center text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                 >
                   GitHub
                 </Link>

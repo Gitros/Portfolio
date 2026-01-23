@@ -48,7 +48,7 @@ export default function ProjectModal({
       <div
         className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl
                    transition-all duration-300 ease-out
-                   animate-[modalIn_.18s_ease-out]
+                   animate-modal-in
                    dark:bg-slate-900"
       >
         <button
@@ -120,20 +120,6 @@ export default function ProjectModal({
           </div>
         </div>
       </div>
-
-      {/* animacja */}
-      <style jsx global>{`
-        @keyframes modalIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px) scale(0.98);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-      `}</style>
     </div>
   );
 }
