@@ -58,14 +58,14 @@ export default function Navbar({ locale }: Readonly<{ locale: Locale }>) {
 
           {/* Podmień linki na swoje */}
           <Link
-            href="https://github.com/"
+            href="https://github.com/Gitros"
             target="_blank"
             className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
           >
             GitHub
           </Link>
           <Link
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/jakub-owczarek47/"
             target="_blank"
             className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
           >
@@ -107,14 +107,14 @@ export default function Navbar({ locale }: Readonly<{ locale: Locale }>) {
               <ThemeToggle />
               <div className="grid grid-cols-2 gap-2">
                 <Link
-                  href="https://github.com/"
+                  href="https://github.com/Gitros"
                   target="_blank"
                   className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-center text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                 >
                   GitHub
                 </Link>
                 <Link
-                  href="https://www.linkedin.com/"
+                  href="https://www.linkedin.com/in/jakub-owczarek47/"
                   target="_blank"
                   className="rounded-xl bg-indigo-600 px-3 py-2 text-center text-sm font-medium text-white hover:bg-indigo-700"
                 >

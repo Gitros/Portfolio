@@ -117,7 +117,10 @@ export const aboutContent = {
       tone: "indigo",
     },
     {
-      title: { pl: "Organizator Turniejów", en: "Tournament Organizer" } as any, // (zrobimy to niżej w komponencie)
+      title: {
+        pl: "Organizator Turniejów",
+        en: "Tournament Organizer",
+      } as unknown,
       meta: { pl: "Ezsat • Obecnie", en: "Ezsat • Current" },
       description: {
         pl: "Organizacja turniejów esportowych, zarządzanie społecznością graczy.",

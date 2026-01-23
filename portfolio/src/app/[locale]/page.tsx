@@ -1,5 +1,6 @@
 import Container from "@/components/layout/Container";
 import AboutSection from "@/components/sections/AboutSection";
+import ContactSection from "@/components/sections/ContactSection";
 import EducationSection from "@/components/sections/EducationSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
@@ -128,14 +129,7 @@ export default async function Home({
 
       <AboutSection locale={locale === "pl" ? "pl" : "en"} />
 
-      <section id="contact" className="py-14">
-        <Container>
-          <div className="card p-8">
-            <h2 className="text-3xl font-bold">Kontakt</h2>
-            <div className="mt-6 h-48 rounded-2xl bg-slate-50 dark:bg-slate-800/60" />
-          </div>
-        </Container>
-      </section>
+      <ContactSection locale={locale} />
 
       <footer className="mt-10 border-t border-slate-200 py-10 dark:border-slate-800">
         <Container>
