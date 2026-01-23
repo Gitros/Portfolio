@@ -39,7 +39,7 @@ export const projects: Project[] = [
     links: {
       github: "https://github.com/OrderingApp/RestaurantOrderingAppSolution",
       demo: "", // jeśli brak – zostaw puste lub usuń
-      video: "", // wkleisz link do nagrania
+      video: "https://www.youtube.com/watch?v=iy51HLNyc4U", // wkleisz link do nagrania
     },
     image: "/images/projects/ordering-app.png",
   },

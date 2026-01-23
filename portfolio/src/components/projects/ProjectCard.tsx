@@ -31,8 +31,8 @@ export default function ProjectCard({
         {project.stack.slice(0, 4).map((t) => (
           <span
             key={t}
-            className="rounded-full bg-slate-100 px-2 py-0.5 text-xs
-                       dark:bg-slate-800"
+            className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-800
+             dark:bg-slate-800 dark:text-slate-200"
           >
             {t}
           </span>
