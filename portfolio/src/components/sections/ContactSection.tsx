@@ -50,7 +50,9 @@ const t = {
   },
 };
 
-export default function ContactSection({ locale }: { locale: Locale }) {
+export default function ContactSection({
+  locale,
+}: Readonly<{ locale: Locale }>) {
   const [copied, setCopied] = useState(false);
 
   const mailto = useMemo(() => {
@@ -116,9 +118,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900
-                             hover:border-indigo-200 hover:text-indigo-700
-                             dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                 >
                   {copied ? (
                     <Check className="h-4 w-4" />
@@ -215,9 +215,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
 
               <button
                 type="submit"
-                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-4 text-sm font-bold text-white shadow-md
-                           hover:bg-indigo-700 active:scale-[0.99]
-                           dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-4 text-sm font-bold text-white shadow-md hover:bg-indigo-700 active:scale-[0.99] dark:bg-indigo-500 dark:hover:bg-indigo-600"
               >
                 <Send className="h-4 w-4" />
                 {t.form.send[locale]}
@@ -291,9 +289,7 @@ function SocialRow({
     <a
       href={href}
       target="_blank"
-      className="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm
-                 hover:border-indigo-200 hover:shadow-md
-                 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-400/60"
+      className="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm hover:border-indigo-200 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-400/60"
     >
       <div className="flex items-center gap-3">
         <div className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-50 text-slate-900 dark:bg-slate-800 dark:text-slate-100">
@@ -357,9 +353,7 @@ function Field({
         type={type}
         placeholder={placeholder}
         required={required}
-        className="h-12 rounded-2xl border border-slate-200 bg-white px-4 text-slate-900 shadow-sm outline-none
-                   focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200/60
-                   dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
+        className="h-12 rounded-2xl border border-slate-200 bg-white px-4 text-slate-900 shadow-sm outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200/60 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
       />
     </label>
   );
@@ -386,9 +380,7 @@ function TextArea({
         placeholder={placeholder}
         required={required}
         rows={6}
-        className="min-h-[160px] resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none
-                   focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200/60
-                   dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
+        className="min-h-[160px] resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200/60 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
       />
     </label>
   );

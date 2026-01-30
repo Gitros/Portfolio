@@ -94,8 +94,7 @@ export default function AboutSection({ locale }: { locale: Locale }) {
                 return (
                   <div
                     key={s.value + s.label[locale]}
-                    className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm
-                               dark:border-slate-800 dark:bg-slate-900"
+                    className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900"
                   >
                     <div className="mx-auto grid h-11 w-11 place-items-center rounded-2xl bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300">
                       <Icon className="h-5 w-5" />

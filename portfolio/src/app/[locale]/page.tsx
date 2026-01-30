@@ -26,12 +26,7 @@ export default async function Home({
       <section className="relative overflow-hidden pt-10 pb-14 md:pt-12 md:pb-20">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -top-24 left-1/2 -translate-x-1/2">
-            <div
-              className="h-[520px] w-[900px] rounded-full blur-3xl
-                 bg-gradient-to-r from-indigo-200/60 via-fuchsia-200/40 to-sky-200/40
-                 dark:from-indigo-500/20 dark:via-fuchsia-500/10 dark:to-sky-500/10
-                 gradient-float"
-            />
+            <div className="h-130 w-225 rounded-full blur-3xl bg-linear-to-r from-indigo-200/60 via-fuchsia-200/40 to-sky-200/40 dark:from-indigo-500/20 dark:via-fuchsia-500/10 dark:to-sky-500/10 gradient-float" />
           </div>
         </div>
 
@@ -40,10 +35,7 @@ export default async function Home({
             {/* LEFT */}
             <div className="flex flex-col justify-center">
               <div>
-                <span
-                  className="inline-flex items-center rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-700
-          dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300"
-                >
+                <span className="inline-flex items-center rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
                   👋 {m.hero.badge}
                 </span>
 
@@ -70,9 +62,7 @@ export default async function Home({
                     href="https://github.com/"
                     target="_blank"
                     aria-label="GitHub"
-                    className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center
-            hover:border-indigo-200 hover:text-indigo-700
-            dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                    className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                   >
                     GH
                   </a>
@@ -81,9 +71,7 @@ export default async function Home({
                     href="https://www.linkedin.com/"
                     target="_blank"
                     aria-label="LinkedIn"
-                    className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center
-            hover:border-indigo-200 hover:text-indigo-700
-            dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                    className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                   >
                     in
                   </a>
@@ -91,9 +79,7 @@ export default async function Home({
                   <a
                     href="mailto:twojemail@example.com"
                     aria-label="Email"
-                    className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center
-            hover:border-indigo-200 hover:text-indigo-700
-            dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                    className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                   >
                     @
                   </a>

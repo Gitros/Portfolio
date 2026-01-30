@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { X, GithubIcon, Video } from "lucide-react";
+import { X, GithubIcon, Video, ArrowRight } from "lucide-react";
 import type { Project } from "@/data/projects";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ProjectModal({
   project,
@@ -31,6 +33,10 @@ export default function ProjectModal({
     return () => globalThis.removeEventListener("keydown", onKey);
   }, [onClose]);
 
+  const router = useRouter();
+
+  const processLabel = locale === "pl" ? "Zobacz mój proces" : "See my process";
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -44,16 +50,10 @@ export default function ProjectModal({
       <div className="pointer-events-none absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
 
       {/* panel */}
-      <div
-        className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl
-                   transition-all duration-300 ease-out
-                   animate-modal-in
-                   dark:bg-slate-900"
-      >
+      <div className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl transition-all duration-300 ease-out animate-modal-in dark:bg-slate-900">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-xl p-2 text-slate-700 hover:bg-slate-100
-                     dark:text-slate-200 dark:hover:bg-slate-800"
+          className="absolute right-4 top-4 rounded-xl p-2 text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
@@ -73,8 +73,7 @@ export default function ProjectModal({
             {project.stack.map((t) => (
               <span
                 key={t}
-                className="rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700
-                           dark:bg-indigo-500/10 dark:text-indigo-300"
+                className="rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
               >
                 {t}
               </span>
@@ -97,9 +96,7 @@ export default function ProjectModal({
               <a
                 href={project.links.video}
                 target="_blank"
-                className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800
-                           hover:border-indigo-200 hover:text-indigo-700
-                           dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
               >
                 <Video className="h-4 w-4" />
                 Video
@@ -108,12 +105,19 @@ export default function ProjectModal({
 
             <button
               disabled
-              className="inline-flex cursor-not-allowed items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-400
-                         dark:border-slate-800"
+              className="inline-flex cursor-not-allowed items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-400 dark:border-slate-800"
               title="Demo wkrótce"
             >
               Demo (wkrótce)
             </button>
+
+            <Link
+              href={`/${locale}/projects/${project.id}`}
+              className="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700"
+              onClick={onClose}
+            >
+              {locale === "pl" ? "Zobacz mój proces" : "See my process"}
+            </Link>
           </div>
         </div>
       </div>
