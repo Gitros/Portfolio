@@ -236,17 +236,127 @@ export const projects: Project[] = [
     id: "activityguard",
     title: "ActivityGuard",
     short: {
-      pl: "User Activity Audit System - logowanie zdarzeń i przegląd w panelu admina.",
-      en: "User Activity Audit System - event logging and admin viewer.",
+      pl: "Audit logi i audit eventy z correlationId + panel admina (POC).",
+      en: "Audit logs & audit events with correlationId + admin panel (POC).",
     },
     description: {
-      pl: "Aplikacja pokazująca audyt akcji użytkowników + filtracja + podgląd szczegółów.",
-      en: "App showcasing user action auditing + filtering + event details view.",
+      pl: "POC systemu audytu i śledzenia aktywności użytkowników: request-level Audit Logs + domain-level Audit Events, korelowane correlationId. Skupiony na architekturze, obserwowalności i czytelnym UI admina — nie na CRUD.",
+      en: "POC audit/activity tracking system: request-level Audit Logs + domain-level Audit Events connected via correlationId. Focused on architecture, observability and a clean admin UI — not CRUD.",
     },
-    stack: ["Next.js", "React", "Tailwind", ".NET", "SQL"],
+    stack: [
+      ".NET",
+      "C#",
+      "EF Core",
+      "SQL Server",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "JWT",
+    ],
     links: {
-      github: "https://github.com/Gitros",
+      github: "https://github.com/Gitros/activity-guard", // <- wstaw właściwy link
+      video: "epTyWyW6y2s", // <- tu wrzucisz
+      demo: "", // jak zrobisz deploy, tu dasz url
     },
     image: "/images/projects/activityguard.png",
+
+    about: {
+      intro: {
+        pl: "ActivityGuard to Proof of Concept pokazujący jak budować audyt i tracking aktywności w aplikacji webowej: logi requestów (middleware) + zdarzenia domenowe (serwisy), spięte correlationId i wyświetlane w panelu admina.",
+        en: "ActivityGuard is a Proof of Concept showing how to build audit & activity tracking: request logs (middleware) + domain events (services), connected via correlationId and presented in an admin UI.",
+      },
+      features: {
+        pl: [
+          "Audit Logs: automatyczny zapis każdego requestu (status, ścieżka, user, user-agent, IP, correlationId)",
+          "Audit Events: jawne zapisywanie akcji domenowych (typ, aktor, target, metadata JSON)",
+          "Nawigacja event → powiązany request log (i odwrotnie)",
+          "Admin UI: filtry, wyszukiwanie, panel szczegółów, wybór kolumn (localStorage)",
+          "Demo endpoints: PING / FAIL / ADMIN-ONLY do generowania danych",
+        ],
+        en: [
+          "Audit Logs: automatic request logging (status, path, user, user-agent, IP, correlationId)",
+          "Audit Events: explicit domain actions (type, actor, target, JSON metadata)",
+          "Navigation event → related request log (and back)",
+          "Admin UI: filters, search, details panel, column picker (localStorage)",
+          "Demo endpoints: PING / FAIL / ADMIN-ONLY to generate data",
+        ],
+      },
+      architecture: {
+        pl: [
+          "Clean Architecture: Domain / Application / Infrastructure / API",
+          "AuditMiddleware: log requestu zawsze, bez psucia requestów (non-breaking)",
+          "EF Core w Infrastructure + repozytoria, bez wycieków do Application",
+          "JWT auth + role (User/Admin), widoki audytu tylko dla Admin",
+        ],
+        en: [
+          "Clean Architecture: Domain / Application / Infrastructure / API",
+          "AuditMiddleware: always log requests, non-breaking behavior",
+          "EF Core in Infrastructure + repositories, no leaking to Application",
+          "JWT auth + roles (User/Admin), audit views for Admin only",
+        ],
+      },
+    },
+
+    highlights: {
+      pl: {
+        title: "Co ten projekt pokazuje",
+        items: [
+          "Dwie warstwy audytu: request-level i domain-level",
+          "CorrelationId jako kręgosłup traceability (debugging, śledzenie działań)",
+          "Admin UI z nawigacją i panelem szczegółów (realny use-case)",
+          "Projekt POC nastawiony na architekturę, a nie CRUD",
+        ],
+      },
+      en: {
+        title: "What this project demonstrates",
+        items: [
+          "Two audit layers: request-level and domain-level",
+          "CorrelationId as the backbone of traceability",
+          "Admin UI with navigation + details panel (realistic use-case)",
+          "POC focused on architecture, not CRUD",
+        ],
+      },
+    },
+
+    process: [
+      {
+        title: {
+          pl: "Projektowanie modelu audytu",
+          en: "Designing the audit model",
+        },
+        text: {
+          pl: "Rozdzieliłem log requestu (AuditLog) od akcji domenowej (AuditEvent), a całość spiąłem correlationId.",
+          en: "I separated request logs (AuditLog) from domain actions (AuditEvent) and connected them via correlationId.",
+        },
+        tags: ["Architecture", "CorrelationId"],
+      },
+      {
+        title: {
+          pl: "Middleware i niezawodność",
+          en: "Middleware & reliability",
+        },
+        text: {
+          pl: "Audit jest non-breaking — nawet jeśli zapis audytu padnie, request nie powinien się wysypać.",
+          en: "Audit is non-breaking — audit failures should never break requests.",
+        },
+        tags: ["Middleware", "Resilience"],
+      },
+      {
+        title: { pl: "Panel admina", en: "Admin UI" },
+        text: {
+          pl: "Dodałem filtry, wyszukiwanie, panel szczegółów i wybór kolumn (per user w localStorage).",
+          en: "Added filters, search, details panel and per-user column picker (localStorage).",
+        },
+        tags: ["React", "UI"],
+      },
+      {
+        title: { pl: "Demo endpointy", en: "Demo endpoints" },
+        text: {
+          pl: "PING/FAIL/ADMIN-ONLY generują spójne logi i eventy do prezentacji projektu.",
+          en: "PING/FAIL/ADMIN-ONLY generate consistent logs/events for showcasing the system.",
+        },
+        tags: ["Demo", "Auth"],
+      },
+    ],
   },
 ];

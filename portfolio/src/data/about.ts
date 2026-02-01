@@ -29,7 +29,7 @@ export type AboutRole = {
 export const aboutContent = {
   title: { pl: "O mnie", en: "About" },
   subtitle: {
-    pl: "Pasjonat technologii, esportu i tworzenia rozwiązań webowych",
+    pl: "Pasjonat technologii, esportu i główkowania nad rozwiązywaniem problemów :)",
     en: "Tech enthusiast, esports organizer and web solutions builder",
   },
 
@@ -37,11 +37,11 @@ export const aboutContent = {
   paragraphs: {
     pl: [
       "Jestem informatykiem z tytułem technika informatyka, obecnie studiuję informatykę i pracuję jako IT Specialist w firmie Piccolo. Moją pasją jest tworzenie aplikacji webowych i rozwiązywanie problemów technicznych.",
-      "Oprócz programowania, zajmuję się organizacją turniejów esportowych jako Eszat, gdzie łączę moje umiejętności techniczne z pasją do gamingu. Posiadam również certyfikat grafika zdobyty podczas konkursu w technikum.",
+      "Oprócz programowania, zajmowałem się organizacją turniejów esportowych jako Ezsat, gdzie łączę moje umiejętności techniczne z pasją do gamingu. Posiadam również certyfikat grafika zdobyty podczas konkursu w technikum.",
     ],
     en: [
       "I’m an IT specialist with a technician diploma. I currently study computer science and work as an IT Specialist at Piccolo. I enjoy building web applications and solving technical problems.",
-      "Besides coding, I organize esports tournaments (Eszat), combining my technical skills with gaming. I also have a design certificate earned during a high-school competition.",
+      "Besides coding, I was organizing esports tournaments (Ezsat), combining my technical skills with gaming. I also have a design certificate earned during a high-school competition.",
     ],
   },
 
@@ -58,12 +58,12 @@ export const aboutContent = {
     },
     {
       icon: "zap",
-      value: "3+",
+      value: "4+",
       label: { pl: "Lata doświadczenia", en: "Years of experience" },
     },
     {
       icon: "trophy",
-      value: "20+",
+      value: "5+",
       label: { pl: "Turniejów zorganizowanych", en: "Tournaments organized" },
     },
   ] satisfies AboutStat[],
@@ -104,7 +104,7 @@ export const aboutContent = {
     },
   ] satisfies AboutProcessStep[],
 
-  rolesTitle: { pl: "Aktualne role", en: "Current roles" },
+  rolesTitle: { pl: "Role", en: "Roles" },
   roles: [
     {
       title: "IT Specialist",
@@ -121,7 +121,7 @@ export const aboutContent = {
         pl: "Organizator Turniejów",
         en: "Tournament Organizer",
       } as unknown,
-      meta: { pl: "Ezsat • Obecnie", en: "Ezsat • Current" },
+      meta: { pl: "Ezsat • 2020-2023", en: "Ezsat • 2020-2023" },
       description: {
         pl: "Organizacja turniejów esportowych, zarządzanie społecznością graczy.",
         en: "Organizing esports tournaments and managing the gaming community.",

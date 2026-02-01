@@ -30,7 +30,7 @@ const pl: Messages = {
     title1: "IT Specialist &",
     title2: "Developer",
     subtitle:
-      "Student informatyki, tworzę aplikacje webowe i rozwiązuję problemy techniczne. Pracuję jako informatyk w Piccolo.",
+      "Student informatyki, tworzę aplikacje webowe i rozwiązuję problemy techniczne.",
     ctaProjects: "Zobacz projekty",
   },
 };
@@ -48,7 +48,7 @@ const en: Messages = {
     title1: "IT Specialist &",
     title2: "Developer",
     subtitle:
-      "Computer Science student building web apps and solving technical problems. I work as an IT specialist at Piccolo.",
+      "Computer Science student building web apps and solving technical problems.",
     ctaProjects: "See projects",
   },
 };

@@ -55,7 +55,7 @@ export const skills: SkillCategory[] = [
       {
         id: "js",
         name: "JavaScript",
-        level: "expert",
+        level: "advanced",
         facts: [
           { icon: "time", text: { pl: "3+ lata", en: "3+ years" } },
           {
@@ -64,9 +64,19 @@ export const skills: SkillCategory[] = [
           },
         ],
       },
-      { id: "cs", name: "C#", level: "advanced" },
+      {
+        id: "cs",
+        name: "C#",
+        level: "advanced",
+        facts: [
+          { icon: "time", text: { pl: "2+ lata", en: "2+ years" } },
+          {
+            icon: "projects",
+            text: { pl: "3+ projektów", en: "3+ projects" },
+          },
+        ],
+      },
       { id: "sql", name: "SQL", level: "advanced" },
-      { id: "py", name: "Python", level: "intermediate" },
       { id: "htmlcss", name: "HTML/CSS", level: "expert" },
     ],
   },
@@ -98,10 +108,10 @@ export const skills: SkillCategory[] = [
     label: { pl: "Tools & DevOps", en: "Tools & DevOps" },
     items: [
       { id: "git", name: "Git & GitHub", level: "expert" },
-      { id: "vscode", name: "VS Code", level: "expert" },
+      { id: "jenkins", name: "Jenkins", level: "expert" },
+      { id: "vscode", name: "VS Code / VS", level: "expert" },
       { id: "docker", name: "Docker", level: "intermediate" },
-      { id: "vercel", name: "Vercel", level: "advanced" },
-      { id: "azure", name: "Azure (podstawy)", level: "intermediate" },
+      { id: "azure", name: "Azure", level: "intermediate" },
     ],
   },
 ];

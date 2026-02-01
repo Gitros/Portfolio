@@ -5,6 +5,7 @@ import Container from "@/components/layout/Container";
 import { skills, type SkillCategoryId, levelLabel } from "@/data/skills";
 import SkillCard from "@/components/skills/SkillCard";
 import { Code2, Layers3, Palette, Wrench, Sparkles } from "lucide-react";
+import TechCard from "../skills/TechCard";
 
 type Locale = "pl" | "en";
 
@@ -81,17 +82,34 @@ export default function SkillsSection({
         </div>
 
         {/* cards */}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {activeCategory.items.map((s) => (
-            <SkillCard key={s.id} skill={s} locale={locale} />
+            <TechCard key={s.id} skill={s} locale={locale} />
           ))}
         </div>
 
-        {/* legend */}
-        <div className="mt-10 flex flex-wrap justify-center gap-8 text-sm text-slate-600 dark:text-slate-300">
-          <LegendItem label={levelLabel.expert[locale]} dots={5} />
-          <LegendItem label={levelLabel.advanced[locale]} dots={4} />
-          <LegendItem label={levelLabel.intermediate[locale]} dots={3} />
+        {/* all tags (opcjonalnie) */}
+        <div className="mt-12 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+              {locale === "pl" ? "Wszystkie technologie:" : "All technologies:"}
+            </span>
+
+            <div className="flex flex-wrap gap-2">
+              {skills
+                .flatMap((c) => c.items)
+                .map((x) => x.name)
+                .map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700
+                     dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
+                  >
+                    {t}
+                  </span>
+                ))}
+            </div>
+          </div>
         </div>
       </Container>
     </section>

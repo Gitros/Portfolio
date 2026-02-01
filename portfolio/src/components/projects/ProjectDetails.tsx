@@ -3,6 +3,7 @@ import { BookOpen, Users, Workflow, ExternalLink } from "lucide-react";
 import MiroEmbed from "./MiroEmbed";
 import ProjectHighlights from "./ProjectHighlights";
 import ProjectLearnings from "./ProjectLearnings";
+import ProjectVideo from "../helpers/ProjectVide";
 
 export default function ProjectDetails({
   project,
@@ -12,6 +13,8 @@ export default function ProjectDetails({
   locale: "pl" | "en";
 }>) {
   const t = (pl: string, en: string) => (locale === "pl" ? pl : en);
+
+  const hasVideo = Boolean(project.links?.video?.trim());
 
   return (
     <div className="space-y-10 mt-5">
@@ -62,37 +65,51 @@ export default function ProjectDetails({
       {/* O projekcie */}
       {project.about && (
         <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <div className="mb-5 flex items-center gap-3">
+          <div className="mb-6 flex items-center gap-3">
             <BookOpen className="h-5 w-5 text-indigo-600 dark:text-indigo-300" />
             <h2 className="text-2xl font-bold">{t("O projekcie", "About")}</h2>
           </div>
 
-          <p className="text-slate-700 dark:text-slate-200">
-            {project.about.intro[locale]}
-          </p>
-
-          <div className="mt-6 grid gap-8 md:grid-cols-2">
+          <div
+            className={hasVideo ? "grid gap-8 lg:grid-cols-2" : "grid gap-8"}
+          >
+            {/* LEWA STRONA – opis */}
             <div>
-              <h3 className="font-semibold text-slate-900 dark:text-slate-100">
-                {t("Główne funkcje", "Key features")}
-              </h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-200">
-                {project.about.features[locale].map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
-              </ul>
+              <p className="text-slate-700 dark:text-slate-200">
+                {project.about.intro[locale]}
+              </p>
+
+              <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                <div>
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">
+                    {t("Główne funkcje", "Key features")}
+                  </h3>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-200">
+                    {project.about.features[locale].map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">
+                    {t("Architektura", "Architecture")}
+                  </h3>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-200">
+                    {project.about.architecture[locale].map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h3 className="font-semibold text-slate-900 dark:text-slate-100">
-                {t("Architektura", "Architecture")}
-              </h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-200">
-                {project.about.architecture[locale].map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
-              </ul>
-            </div>
+            {/* PRAWA STRONA – video */}
+            {hasVideo && (
+              <div className="lg:sticky lg:top-24">
+                <ProjectVideo youtubeId={project.links!.video!.trim()} />
+              </div>
+            )}
           </div>
         </section>
       )}

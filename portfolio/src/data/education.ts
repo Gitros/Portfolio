@@ -50,8 +50,8 @@ export const education: EducationItem[] = [
       {
         icon: Trophy,
         text: {
-          pl: "Egzaminy zawodowe - zdane",
-          en: "Vocational exams - passed",
+          pl: "Egzaminy zawodowe - INF 02, 03",
+          en: "Vocational exams - INF 02, 03",
         },
       },
       {
@@ -72,7 +72,10 @@ export const education: EducationItem[] = [
     side: "right",
     dateLabel: { pl: "2023 - Obecnie", en: "2023 - Present" },
     title: { pl: "Informatyka", en: "Computer Science" },
-    subtitle: { pl: "Studia wyższe", en: "Higher education" },
+    subtitle: {
+      pl: "Wyższa Szkoła Bisnesu - National Louis University",
+      en: "Wyższa Szkoła Bisnesu - National Louis University",
+    },
     description: {
       pl: "Inżynieria oprogramowania i nowoczesne technologie.",
       en: "Software engineering and modern technologies.",
