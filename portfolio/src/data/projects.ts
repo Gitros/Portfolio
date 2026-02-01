@@ -79,7 +79,7 @@ export const projects: Project[] = [
     ],
     links: {
       github: "https://github.com/OrderingApp/RestaurantOrderingAppSolution",
-      video: "12442", // uzupełnisz
+      video: "epTyWyW6y2s", // uzupełnisz
     },
 
     learnings: [
