@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import Container from "@/components/layout/Container";
 import { skills, type SkillCategoryId, levelLabel } from "@/data/skills";
-import SkillCard from "@/components/skills/SkillCard";
 import { Code2, Layers3, Palette, Wrench, Sparkles } from "lucide-react";
 import TechCard from "../skills/TechCard";
 
@@ -102,8 +101,7 @@ export default function SkillsSection({
                 .map((t) => (
                   <span
                     key={t}
-                    className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700
-                     dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
+                    className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
                   >
                     {t}
                   </span>

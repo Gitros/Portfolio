@@ -7,6 +7,7 @@ import SkillsSection from "@/components/sections/SkillsSection";
 import type { Locale } from "@/i18n/locales";
 import { isLocale } from "@/i18n/locales";
 import { getMessages } from "@/i18n/messages";
+import { GithubIcon, Linkedin, Mail, MailIcon } from "lucide-react";
 import Image from "next/image";
 
 export default async function Home({
@@ -59,29 +60,29 @@ export default async function Home({
                 {/* social icons UNDER CTA */}
                 <div className="mt-6 flex items-center gap-3">
                   <a
-                    href="https://github.com/"
+                    href="https://github.com/Gitros"
                     target="_blank"
                     aria-label="GitHub"
                     className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                   >
-                    GH
+                    <GithubIcon className="h-5 w-5" />
                   </a>
 
                   <a
-                    href="https://www.linkedin.com/"
+                    href="https://www.linkedin.com/in/jakub-owczarek47/"
                     target="_blank"
                     aria-label="LinkedIn"
                     className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                   >
-                    in
+                    <Linkedin className="h-5 w-5" />
                   </a>
 
                   <a
-                    href="mailto:twojemail@example.com"
+                    href="mailto:jakubowczarek882@gmail.com"
                     aria-label="Email"
                     className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 grid place-items-center hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                   >
-                    @
+                    <MailIcon className="h-5 w-5" />
                   </a>
                 </div>
               </div>
@@ -126,14 +127,14 @@ export default async function Home({
             <div className="flex gap-3 text-sm">
               <a
                 className="muted hover:text-indigo-700 dark:hover:text-indigo-300"
-                href="https://github.com/"
+                href="https://github.com/Gitros"
                 target="_blank"
               >
                 GitHub
               </a>
               <a
                 className="muted hover:text-indigo-700 dark:hover:text-indigo-300"
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/jakub-owczarek47/"
                 target="_blank"
               >
                 LinkedIn

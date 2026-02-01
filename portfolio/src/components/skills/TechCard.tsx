@@ -75,15 +75,10 @@ export default function TechCard({
   const Icon = skillIcons[skill.id] ?? Code2;
 
   return (
-    <div
-      className="rounded-3xl border border-indigo-100 bg-white p-6 shadow-sm transition
-                 hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md
-                 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-400/40"
-    >
+    <div className="rounded-3xl border border-indigo-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-400/40">
       <div className="flex items-start gap-4">
         <div
-          className="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-50 text-indigo-700
-                     dark:bg-indigo-500/10 dark:text-indigo-300"
+          className="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
           aria-hidden="true"
         >
           <Icon className="h-6 w-6" />

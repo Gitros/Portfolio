@@ -44,8 +44,8 @@ const t = {
     },
     send: { pl: "Wyślij wiadomość", en: "Send message" },
     hint: {
-      pl: "Odpowiem najszybciej jak to możliwe! 🚀",
-      en: "I’ll reply as soon as I can! 🚀",
+      pl: "Odpowiem najszybciej jak to możliwe!",
+      en: "I’ll reply as soon as I can!",
     },
   },
 };

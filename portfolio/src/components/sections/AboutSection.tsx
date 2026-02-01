@@ -69,7 +69,7 @@ export default function AboutSection({ locale }: { locale: Locale }) {
         </div>
 
         {/* top grid: text card + image */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:items-stretch">
+        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:items-start">
           {/* left card */}
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div className="flex items-center gap-3">
@@ -142,15 +142,21 @@ export default function AboutSection({ locale }: { locale: Locale }) {
           </div>
 
           {/* right image */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <div className="overflow-hidden rounded-[1.35rem]">
-              <Image
-                src={c.image.src}
-                alt={c.image.alt}
-                width={1400}
-                height={900}
-                className="h-[420px] w-full object-cover sm:h-[480px] lg:h-full"
-              />
+          {/* right image */}
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex justify-center">
+              <div className="w-full max-w-[640px]">
+                <div className="overflow-hidden rounded-[1.35rem]">
+                  <Image
+                    src={c.image.src}
+                    alt={c.image.alt}
+                    width={1400}
+                    height={900}
+                    className="h-[360px] w-full object-cover sm:h-[420px]"
+                    priority={false}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

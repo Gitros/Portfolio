@@ -7,6 +7,7 @@ import LanguageSwitch from "./LanguageSwitch";
 import ThemeToggle from "./ThemeToggle";
 import type { Locale } from "@/i18n/locales";
 import { getMessages } from "@/i18n/messages";
+import { GithubIcon, Linkedin } from "lucide-react";
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -62,14 +63,14 @@ export default function Navbar({ locale }: Readonly<{ locale: Locale }>) {
             target="_blank"
             className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
           >
-            GitHub
+            <GithubIcon />
           </Link>
           <Link
             href="https://www.linkedin.com/in/jakub-owczarek47/"
             target="_blank"
             className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
           >
-            LinkedIn
+            <Linkedin />
           </Link>
         </div>
 

@@ -79,7 +79,7 @@ export const projects: Project[] = [
     ],
     links: {
       github: "https://github.com/OrderingApp/RestaurantOrderingAppSolution",
-      video: "", // uzupełnisz
+      video: "12442", // uzupełnisz
     },
 
     learnings: [
@@ -358,5 +358,179 @@ export const projects: Project[] = [
         tags: ["Demo", "Auth"],
       },
     ],
+  },
+  {
+    id: "dbmetatool",
+    title: "DbMetaTool",
+    short: {
+      pl: "Narzędzie .NET 8 do eksportu i odtwarzania metadanych Firebird 5.0 (domeny, tabele, procedury).",
+      en: ".NET 8 tool to export and recreate Firebird 5.0 metadata (domains, tables, procedures).",
+    },
+    description: {
+      pl: "Konsolowe narzędzie do budowania nowej bazy Firebird 5.0 ze skryptów, eksportu metadanych do SQL oraz aktualizacji istniejącej bazy na podstawie katalogu skryptów. Zakres: domeny, tabele (kolumny), procedury.",
+      en: "Console tool for building a Firebird 5.0 database from scripts, exporting metadata to SQL, and updating an existing database from a scripts directory. Scope: domains, tables (columns), procedures.",
+    },
+    stack: [".NET 8", "C#", "Firebird 5.0", "SQL", "CLI", "Testing"],
+    links: {
+      github: "PASTE_GITHUB_REPO_URL_HERE",
+      // video: "YOUTUBE_ID_TU_JESLI_BEDZIE"
+      // demo: "" // raczej nie
+    },
+
+    about: {
+      intro: {
+        pl: "DbMetaTool to aplikacja konsolowa w .NET 8 do budowania, eksportu i aktualizacji schematu bazy Firebird 5.0 na podstawie katalogu skryptów SQL. Projekt powstał jako narzędzie do pracy z metadanymi w kontrolowany i powtarzalny sposób.",
+        en: "DbMetaTool is a .NET 8 console app for building, exporting and updating Firebird 5.0 schema from a SQL scripts directory. It was built to handle metadata in a controlled and repeatable way.",
+      },
+      features: {
+        pl: [
+          "build-db: buduje nową bazę .fdb na podstawie katalogu skryptów SQL",
+          "export-scripts: generuje skrypty metadanych z istniejącej bazy do struktury katalogów",
+          "update-db: aktualizuje istniejącą bazę na podstawie katalogu skryptów",
+          "Obsługiwane obiekty: domeny, tabele (kolumny), procedury",
+          "Tryb update-db jest bezpieczny/permisywny: nie usuwa istniejących elementów",
+        ],
+        en: [
+          "build-db: creates a new .fdb database from SQL scripts",
+          "export-scripts: exports metadata scripts from an existing database into folders",
+          "update-db: updates an existing database from scripts directory",
+          "Supported objects: domains, tables (columns), procedures",
+          "Safe/permissive update mode: doesn’t delete existing elements",
+        ],
+      },
+      architecture: {
+        pl: [
+          "Application: Contracts (interfejsy) + Services (logika)",
+          "Domain: modele POCO (DomainType, Table, Column, Procedure)",
+          "Infrastructure: pomocnicze narzędzia (np. zapis plików)",
+          "Program.cs: parsowanie argumentów i uruchamianie komend",
+        ],
+        en: [
+          "Application: Contracts (interfaces) + Services (logic)",
+          "Domain: POCO models (DomainType, Table, Column, Procedure)",
+          "Infrastructure: helpers (e.g. file saving)",
+          "Program.cs: args parsing + command execution",
+        ],
+      },
+    },
+
+    highlights: {
+      pl: {
+        title: "Co jest tu „mocne”",
+        items: [
+          "3 komendy CLI (build-db, export-scripts, update-db) z czytelnym DX",
+          "Eksport do uporządkowanej struktury katalogów (domains/tables/procedures)",
+          "Idempotentność update-db: uruchamiasz wiele razy bez psucia stanu",
+          "Procedury tworzone przez CREATE OR ALTER",
+          "Testy integracyjne na tymczasowych katalogach i plikach .fdb",
+        ],
+      },
+      en: {
+        title: "Key highlights",
+        items: [
+          "3 CLI commands (build-db, export-scripts, update-db) with good DX",
+          "Export into clean folder structure (domains/tables/procedures)",
+          "Idempotent update-db: can run multiple times safely",
+          "Procedures created via CREATE OR ALTER",
+          "Integration tests using temporary folders and .fdb files",
+        ],
+      },
+    },
+
+    process: [
+      {
+        title: { pl: "Założenia i scope", en: "Scope & assumptions" },
+        text: {
+          pl: "Zdefiniowałem minimalny zakres metadanych: domeny, tabele (kolumny) i procedury. Reszta (triggery, indeksy, constraints) celowo pominięta.",
+          en: "I defined minimal metadata scope: domains, tables (columns) and procedures. Other objects were intentionally out of scope.",
+        },
+        tags: ["Firebird", "Metadata", "Scope"],
+      },
+      {
+        title: { pl: "Komendy CLI", en: "CLI commands" },
+        text: {
+          pl: "Zaprojektowałem trzy komendy: budowanie bazy ze skryptów, eksport skryptów z bazy oraz aktualizację bazy na podstawie folderu.",
+          en: "Designed three commands: build DB from scripts, export scripts from DB, update DB from folder.",
+        },
+        tags: ["CLI", ".NET 8"],
+      },
+      {
+        title: {
+          pl: "Update-db w trybie bezpiecznym",
+          en: "Safe update-db behavior",
+        },
+        text: {
+          pl: "Update nie usuwa istniejących elementów, a procedury zawsze przechodzą przez CREATE OR ALTER. To pozwala odpalać update wielokrotnie bez efektów ubocznych.",
+          en: "Update doesn't delete existing elements; procedures go through CREATE OR ALTER. This makes it safe to run repeatedly.",
+        },
+        tags: ["Idempotency", "SQL"],
+      },
+      {
+        title: { pl: "Testy integracyjne", en: "Integration tests" },
+        text: {
+          pl: "Testy działają na tymczasowych katalogach i osobnych plikach .fdb — bez ręcznego sprzątania. Sprawdzają m.in. export, update i brak usuwania kolumn.",
+          en: "Tests run on temp folders and separate .fdb files — no manual cleanup. They cover export, update and no column deletion.",
+        },
+        tags: ["Testing"],
+      },
+    ],
+
+    learnings: [
+      {
+        title: {
+          pl: "CLI i ergonomia narzędzia",
+          en: "CLI & developer experience",
+        },
+        items: {
+          pl: [
+            "Projektowanie komend i parametrów tak, żeby narzędzie było czytelne w użyciu (build-db / export-scripts / update-db).",
+            "Myślenie o przewidywalnych outputach i błędach (przyjazne komunikaty, jasne ścieżki plików, powtarzalność).",
+            "Porządkowanie eksportu do struktury katalogów (domains/tables/procedures), żeby łatwo wersjonować skrypty w repo.",
+          ],
+          en: [
+            "Designing commands and parameters for a clear CLI experience (build-db / export-scripts / update-db).",
+            "Thinking about predictable output and errors (friendly messages, clear file paths, repeatability).",
+            "Exporting into a clean folder structure (domains/tables/procedures) that works well with git.",
+          ],
+        },
+      },
+      {
+        title: {
+          pl: "Bezpieczne aktualizacje i idempotentność",
+          en: "Safe updates & idempotency",
+        },
+        items: {
+          pl: [
+            "Budowanie update-db w trybie bezpiecznym/permisywnym (tworzenie gdy nie istnieje, brak usuwania).",
+            "Idempotentność: możliwość wielokrotnego uruchamiania bez psucia schematu.",
+            "Stosowanie CREATE OR ALTER dla procedur jako praktyczny kompromis dla aktualizacji.",
+          ],
+          en: [
+            "Implementing update-db as a safe/permissive operation (create if missing, no deletions).",
+            "Idempotency: running the update multiple times without breaking the schema.",
+            "Using CREATE OR ALTER for procedures as a pragmatic update strategy.",
+          ],
+        },
+      },
+      {
+        title: {
+          pl: "Testy i weryfikacja działania",
+          en: "Testing & verification",
+        },
+        items: {
+          pl: [
+            "Testy na tymczasowych katalogach i osobnych plikach .fdb (bez ręcznego sprzątania).",
+            "Sprawdzanie scenariuszy: build-db, export-scripts, update-db i propagacja nowych obiektów.",
+            "Weryfikacja, że update nie usuwa istniejących kolumn/elementów (bezpieczne działanie).",
+          ],
+          en: [
+            "Tests using temporary folders and separate .fdb files (no manual cleanup).",
+            "Covering scenarios: build-db, export-scripts, update-db and propagating new objects.",
+            "Verifying that update does not delete existing columns/elements (safe behavior).",
+          ],
+        },
+      },
+    ],
+    // image: "/images/projects/dbmetatool.png",
   },
 ];
