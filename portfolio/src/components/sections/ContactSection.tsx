@@ -186,54 +186,56 @@ export default function ContactSection({
           </div>
 
           {/* RIGHT */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <div className="text-xl font-extrabold text-slate-900 dark:text-slate-100">
-              {t.form.title[locale]}
-            </div>
-
-            <form onSubmit={onSubmit} className="mt-6 grid gap-5">
-              <Field
-                label={t.form.name[locale]}
-                name="name"
-                placeholder={t.form.namePh[locale]}
-                type="text"
-                required
-              />
-              <Field
-                label={t.form.email[locale]}
-                name="email"
-                placeholder={t.form.emailPh[locale]}
-                type="email"
-                required
-              />
-              <TextArea
-                label={t.form.msg[locale]}
-                name="message"
-                placeholder={t.form.msgPh[locale]}
-                required
-              />
-
-              <button
-                type="submit"
-                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-4 text-sm font-bold text-white shadow-md hover:bg-indigo-700 active:scale-[0.99] dark:bg-indigo-500 dark:hover:bg-indigo-600"
-              >
-                <Send className="h-4 w-4" />
-                {t.form.send[locale]}
-              </button>
-
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400">
-                {t.form.hint[locale]}
+          <div className="shrink-0 sm:self-start">
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-xl font-extrabold text-slate-900 dark:text-slate-100">
+                {t.form.title[locale]}
               </div>
 
-              <a
-                href={mailto}
-                className="text-center text-sm font-semibold text-indigo-700 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200"
-              >
-                {locale === "pl"
-                  ? "Otwórz klienta poczty z gotowym szablonem →"
-                  : "Open email client with template →"}
-              </a>
-            </form>
+              <form onSubmit={onSubmit} className="mt-6 grid gap-5">
+                <Field
+                  label={t.form.name[locale]}
+                  name="name"
+                  placeholder={t.form.namePh[locale]}
+                  type="text"
+                  required
+                />
+                <Field
+                  label={t.form.email[locale]}
+                  name="email"
+                  placeholder={t.form.emailPh[locale]}
+                  type="email"
+                  required
+                />
+                <TextArea
+                  label={t.form.msg[locale]}
+                  name="message"
+                  placeholder={t.form.msgPh[locale]}
+                  required
+                />
+
+                <button
+                  type="submit"
+                  className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-4 text-sm font-bold text-white shadow-md hover:bg-indigo-700 active:scale-[0.99] dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                >
+                  <Send className="h-4 w-4" />
+                  {t.form.send[locale]}
+                </button>
+
+                <div className="text-center text-sm text-slate-500 dark:text-slate-400">
+                  {t.form.hint[locale]}
+                </div>
+
+                <a
+                  href={mailto}
+                  className="text-center text-sm font-semibold text-indigo-700 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200"
+                >
+                  {locale === "pl"
+                    ? "Otwórz klienta poczty z gotowym szablonem →"
+                    : "Open email client with template →"}
+                </a>
+              </form>
+            </div>
           </div>
         </div>
       </Container>
@@ -254,7 +256,7 @@ function InfoCard({
 }) {
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-start gap-4">
           <div className="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300">
             {icon}
