@@ -39,8 +39,8 @@ const t = {
     namePh: { pl: "Jan Kowalski", en: "John Doe" },
     emailPh: { pl: "jan@example.com", en: "john@example.com" },
     msgPh: {
-      pl: "...",
-      en: "...",
+      pl: "Napisz swoją wiadomość tutaj...",
+      en: "Write your message here...",
     },
     send: { pl: "Wyślij wiadomość", en: "Send message" },
     hint: {

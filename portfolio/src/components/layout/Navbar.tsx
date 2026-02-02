@@ -46,7 +46,7 @@ export default function Navbar({ locale }: Readonly<{ locale: Locale }>) {
               key={it.id}
               type="button"
               onClick={() => scrollToId(it.id)}
-              className="text-sm font-medium text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white"
+              className="text-sm font-medium text-slate-700 cursor-pointer hover:text-slate-900 dark:text-slate-200 dark:hover:text-white"
             >
               {it.label}
             </button>

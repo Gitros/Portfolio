@@ -24,7 +24,7 @@ const tabActive =
   "dark:bg-indigo-500 dark:border-indigo-500 dark:text-white";
 
 const tabInactive =
-  "bg-white text-slate-900 border-slate-200 hover:border-indigo-200 hover:text-indigo-700 " +
+  "bg-white text-slate-900 border-slate-200 cursor-pointer hover:border-indigo-200 hover:text-indigo-700 " +
   "dark:bg-slate-900 dark:text-slate-100 dark:border-slate-800 dark:hover:border-indigo-400 dark:hover:text-indigo-300";
 
 export default function SkillsSection({

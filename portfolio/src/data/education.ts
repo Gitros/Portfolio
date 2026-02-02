@@ -34,13 +34,16 @@ export const education: EducationItem[] = [
     side: "left",
     dateLabel: { pl: "2019 - 2023", en: "2019 - 2023" },
     title: { pl: "Technik Informatyk", en: "IT Technician" },
-    subtitle: { pl: "Technikum Informatyczne", en: "IT Technical High School" },
+    subtitle: {
+      pl: "Zespół Szkół Agro-Technicznych w Ropczycach",
+      en: "Zespół Szkół Agro-Technicznych w Ropczycach",
+    },
     description: {
       pl: "Podstawy programowania, sieci komputerowych i systemów.",
       en: "Fundamentals of programming, computer networks and systems.",
     },
-    badgeVariant: "green",
-    dotColor: "green",
+    badgeVariant: "indigo",
+    dotColor: "indigo",
     icon: GraduationCap,
     highlights: [
       {
@@ -80,8 +83,8 @@ export const education: EducationItem[] = [
       pl: "Inżynieria oprogramowania i nowoczesne technologie.",
       en: "Software engineering and modern technologies.",
     },
-    badgeVariant: "indigo",
-    dotColor: "indigo",
+    badgeVariant: "green",
+    dotColor: "green",
     icon: GraduationCap,
     highlights: [
       {
