@@ -23,7 +23,9 @@ const t = {
   linkedinHint: { pl: "Profil zawodowy", en: "Professional profile" },
 };
 
-export default function ContactSection({ locale }: { locale: Locale }) {
+export default function ContactSection({
+  locale,
+}: Readonly<{ locale: Locale }>) {
   const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
@@ -61,10 +63,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-xs font-semibold
-                             sm:px-3 sm:text-sm
-                             text-slate-900 transition hover:border-indigo-200 hover:text-indigo-700
-                             dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-xs font-semibold sm:px-3 sm:text-sm text-slate-900 transition hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                 >
                   {copied ? (
                     <Check className="h-4 w-4" />
@@ -211,11 +210,7 @@ function BigLinkTile({
 
         {/* right button */}
         <span onClick={(e) => e.stopPropagation()} className="shrink-0">
-          <span
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold
-                       text-slate-900 transition hover:border-indigo-200 hover:text-indigo-700
-                       dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
-          >
+          <span className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 transition hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300">
             {openLabel} →
           </span>
         </span>

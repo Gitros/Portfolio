@@ -12,28 +12,22 @@ function replaceLocale(pathname: string, nextLocale: Locale) {
   return parts.join("/") || `/${nextLocale}`;
 }
 
-export default function LanguageSwitch({ locale }: { locale: Locale }) {
+export default function LanguageSwitch({
+  locale,
+}: Readonly<{ locale: Locale }>) {
   const pathname = usePathname() || `/${locale}`;
+  const nextLocale = locale === "pl" ? "en" : "pl";
+  const label = nextLocale.toUpperCase();
+  const title = nextLocale === "pl" ? "Zmien na PL" : "Switch to EN";
 
   return (
-    <div className="flex items-center gap-1 rounded-xl border border-slate-200 bg-white p-1">
-      {locales.map((l) => {
-        const active = l === locale;
-        return (
-          <Link
-            key={l}
-            href={replaceLocale(pathname, l)}
-            className={[
-              "rounded-lg px-2.5 py-1 text-xs font-semibold",
-              active
-                ? "bg-indigo-600 text-white"
-                : "text-slate-700 hover:text-slate-900",
-            ].join(" ")}
-          >
-            {l.toUpperCase()}
-          </Link>
-        );
-      })}
-    </div>
+    <Link
+      href={replaceLocale(pathname, nextLocale as (typeof locales)[number])}
+      className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-[11px] font-extrabold tracking-widest text-slate-800 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400"
+      aria-label={title}
+      title={title}
+    >
+      {label}
+    </Link>
   );
 }

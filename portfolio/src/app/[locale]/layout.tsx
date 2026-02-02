@@ -17,7 +17,9 @@ export default async function LocaleLayout({
   return (
     <div>
       <Navbar locale={locale} />
-      {children}
+      <div className="pt-[calc(4rem+env(safe-area-inset-top))] md:pt-0">
+        {children}
+      </div>
       <Footer />
     </div>
   );
