@@ -1,69 +1,30 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Container from "@/components/layout/Container";
 import { contact } from "@/data/contact";
-import {
-  Mail,
-  MapPin,
-  Share2,
-  Github,
-  Linkedin,
-  Send,
-  Copy,
-  Check,
-} from "lucide-react";
+import { Mail, MapPin, Github, Linkedin, Copy, Check } from "lucide-react";
 
 type Locale = "pl" | "en";
 
 const t = {
   title: { pl: "Kontakt", en: "Contact" },
   subtitle: {
-    pl: "Masz projekt lub pytanie? Napisz do mnie!",
-    en: "Have a project or question? Message me!",
+    pl: "Masz projekt lub pytanie? Napisz do mnie.",
+    en: "Have a project or question? Reach out.",
   },
-  left: {
-    email: { pl: "Email", en: "Email" },
-    location: { pl: "Lokalizacja", en: "Location" },
-    socials: { pl: "Ważne linki!", en: "Important links!" },
-    github: { pl: "GitHub", en: "GitHub" },
-    linkedin: { pl: "LinkedIn", en: "LinkedIn" },
-    responseTime: { pl: "Czas odpowiedzi", en: "Response time" },
-    engagement: { pl: "Zaangażowanie", en: "Engagement" },
-  },
-  form: {
-    title: { pl: "Wyślij wiadomość", en: "Send a message" },
-    name: { pl: "Imię i nazwisko", en: "Name" },
-    email: { pl: "Email", en: "Email" },
-    msg: { pl: "Wiadomość", en: "Message" },
-    namePh: { pl: "Jan Kowalski", en: "John Doe" },
-    emailPh: { pl: "jan@example.com", en: "john@example.com" },
-    msgPh: {
-      pl: "Napisz swoją wiadomość tutaj...",
-      en: "Write your message here...",
-    },
-    send: { pl: "Wyślij wiadomość", en: "Send message" },
-    hint: {
-      pl: "Odpowiem najszybciej jak to możliwe!",
-      en: "I’ll reply as soon as I can!",
-    },
-  },
+  email: { pl: "Email", en: "Email" },
+  location: { pl: "Lokalizacja", en: "Location" },
+  copy: { pl: "Kopiuj", en: "Copy" },
+  copied: { pl: "Skopiowano", en: "Copied" },
+  github: { pl: "GitHub", en: "GitHub" },
+  linkedin: { pl: "LinkedIn", en: "LinkedIn" },
+  githubHint: { pl: "Zobacz moje repozytoria", en: "See my repositories" },
+  linkedinHint: { pl: "Profil zawodowy", en: "Professional profile" },
 };
 
-export default function ContactSection({
-  locale,
-}: Readonly<{ locale: Locale }>) {
+export default function ContactSection({ locale }: { locale: Locale }) {
   const [copied, setCopied] = useState(false);
-
-  const mailto = useMemo(() => {
-    const subject =
-      locale === "pl" ? "Kontakt z portfolio" : "Portfolio contact";
-    const body =
-      locale === "pl"
-        ? "Cześć Jakub,\n\nPiszę w sprawie...\n"
-        : "Hi Jakub,\n\nI'm reaching out about...\n";
-    return `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, [locale]);
 
   async function copyEmail() {
     try {
@@ -73,24 +34,6 @@ export default function ContactSection({
     } catch {
       // ignore
     }
-  }
-
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const fd = new FormData(e.currentTarget);
-    const name = String(fd.get("name") ?? "");
-    const from = String(fd.get("email") ?? "");
-    const message = String(fd.get("message") ?? "");
-
-    const subject =
-      locale === "pl" ? `Portfolio: ${name}` : `Portfolio: ${name}`;
-    const body =
-      locale === "pl"
-        ? `Imię i nazwisko: ${name}\nEmail: ${from}\n\nWiadomość:\n${message}\n`
-        : `Name: ${name}\nEmail: ${from}\n\nMessage:\n${message}\n`;
-
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
@@ -106,136 +49,60 @@ export default function ContactSection({
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {/* LEFT */}
-          <div className="grid gap-6">
-            {/* Email card */}
-            <InfoCard
+        {/* centered grid */}
+        <div className="mx-auto mt-12 max-w-4xl">
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Email */}
+            <InfoTile
               icon={<Mail className="h-5 w-5" />}
-              title={t.left.email[locale]}
+              title={t.email[locale]}
               subtitle={contact.email}
               right={
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:border-indigo-200 hover:text-indigo-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-xs font-semibold
+                             sm:px-3 sm:text-sm
+                             text-slate-900 transition hover:border-indigo-200 hover:text-indigo-700
+                             dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
                 >
                   {copied ? (
                     <Check className="h-4 w-4" />
                   ) : (
                     <Copy className="h-4 w-4" />
                   )}
-                  {copied
-                    ? locale === "pl"
-                      ? "Skopiowano"
-                      : "Copied"
-                    : locale === "pl"
-                      ? "Kopiuj"
-                      : "Copy"}
+                  {copied ? t.copied[locale] : t.copy[locale]}
                 </button>
               }
             />
 
-            {/* Location card */}
-            <InfoCard
+            {/* Location */}
+            <InfoTile
               icon={<MapPin className="h-5 w-5" />}
-              title={t.left.location[locale]}
+              title={t.location[locale]}
               subtitle={contact.location[locale]}
             />
 
-            {/* Socials card */}
-            <div className="rounded-3xl border border-indigo-100 bg-indigo-50/60 p-6 shadow-sm dark:border-indigo-400/20 dark:bg-indigo-500/10">
-              <div className="flex items-start gap-4">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white shadow-sm dark:bg-slate-900">
-                  <Share2 className="h-5 w-5 text-indigo-700 dark:text-indigo-300" />
-                </div>
-                <div className="w-full">
-                  <div className="text-lg font-bold text-slate-900 dark:text-slate-100">
-                    {t.left.socials[locale]}
-                  </div>
+            {/* LinkedIn (big CTA) */}
+            <BigLinkTile
+              href={contact.linkedinUrl}
+              icon={<Linkedin className="h-6 w-6" />}
+              title={t.linkedin[locale]}
+              handle={contact.linkedinHandle}
+              hint={t.linkedinHint[locale]}
+              tone="slate"
+              locale={locale}
+            />
 
-                  <div className="mt-4 grid gap-3">
-                    <SocialRow
-                      icon={<Github className="h-5 w-5" />}
-                      label={t.left.github[locale]}
-                      handle={contact.githubHandle}
-                      href={contact.githubUrl}
-                    />
-                    <SocialRow
-                      icon={<Linkedin className="h-5 w-5" />}
-                      label={t.left.linkedin[locale]}
-                      handle={contact.linkedinHandle}
-                      href={contact.linkedinUrl}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* stats */}
-            <div className="grid grid-cols-2 gap-6">
-              <StatCard
-                value={contact.responseTime[locale]}
-                label={t.left.responseTime[locale]}
-              />
-              <StatCard
-                value={contact.engagement[locale]}
-                label={t.left.engagement[locale]}
-              />
-            </div>
-          </div>
-
-          {/* RIGHT */}
-          <div className="shrink-0 sm:self-start">
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-              <div className="text-xl font-extrabold text-slate-900 dark:text-slate-100">
-                {t.form.title[locale]}
-              </div>
-
-              <form onSubmit={onSubmit} className="mt-6 grid gap-5">
-                <Field
-                  label={t.form.name[locale]}
-                  name="name"
-                  placeholder={t.form.namePh[locale]}
-                  type="text"
-                  required
-                />
-                <Field
-                  label={t.form.email[locale]}
-                  name="email"
-                  placeholder={t.form.emailPh[locale]}
-                  type="email"
-                  required
-                />
-                <TextArea
-                  label={t.form.msg[locale]}
-                  name="message"
-                  placeholder={t.form.msgPh[locale]}
-                  required
-                />
-
-                <button
-                  type="submit"
-                  className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-4 text-sm font-bold text-white shadow-md hover:bg-indigo-700 active:scale-[0.99] dark:bg-indigo-500 dark:hover:bg-indigo-600"
-                >
-                  <Send className="h-4 w-4" />
-                  {t.form.send[locale]}
-                </button>
-
-                <div className="text-center text-sm text-slate-500 dark:text-slate-400">
-                  {t.form.hint[locale]}
-                </div>
-
-                <a
-                  href={mailto}
-                  className="text-center text-sm font-semibold text-indigo-700 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200"
-                >
-                  {locale === "pl"
-                    ? "Otwórz klienta poczty z gotowym szablonem →"
-                    : "Open email client with template →"}
-                </a>
-              </form>
-            </div>
+            <BigLinkTile
+              href={contact.githubUrl}
+              icon={<Github className="h-6 w-6" />}
+              title={t.github[locale]}
+              handle={contact.githubHandle}
+              hint={t.githubHint[locale]}
+              tone="slate"
+              locale={locale}
+            />
           </div>
         </div>
       </Container>
@@ -243,7 +110,7 @@ export default function ContactSection({
   );
 }
 
-function InfoCard({
+function InfoTile({
   icon,
   title,
   subtitle,
@@ -255,17 +122,17 @@ function InfoCard({
   right?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex items-start gap-4">
-          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300">
+    <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start gap-4 min-w-0">
+          <div className="grid h-10 w-10 place-items-center rounded-2xl bg-indigo-50 text-indigo-700 sm:h-12 sm:w-12 dark:bg-indigo-500/10 dark:text-indigo-300">
             {icon}
           </div>
-          <div>
-            <div className="text-lg font-bold text-slate-900 dark:text-slate-100">
+          <div className="min-w-0">
+            <div className="text-base font-bold text-slate-900 sm:text-lg dark:text-slate-100">
               {title}
             </div>
-            <div className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+            <div className="mt-1 break-words text-sm text-slate-600 dark:text-slate-300">
               {subtitle}
             </div>
           </div>
@@ -276,114 +143,83 @@ function InfoCard({
   );
 }
 
-function SocialRow({
-  icon,
-  label,
-  handle,
+function BigLinkTile({
   href,
+  icon,
+  title,
+  handle,
+  hint,
+  tone,
+  locale,
 }: {
-  icon: React.ReactNode;
-  label: string;
-  handle: string;
   href: string;
+  icon: React.ReactNode;
+  title: string;
+  handle: string;
+  hint: string;
+  tone: "blue" | "slate";
+  locale: "pl" | "en";
 }) {
+  const toneCls =
+    tone === "blue"
+      ? "border-blue-200 bg-blue-50/60 hover:border-blue-300 hover:bg-blue-50 dark:border-blue-400/25 dark:bg-blue-500/10 dark:hover:border-blue-400/45"
+      : "border-slate-200 bg-slate-50/70 hover:border-indigo-200 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-400/40";
+
+  const iconCls =
+    tone === "blue"
+      ? "bg-white text-blue-700 dark:bg-slate-950 dark:text-blue-300"
+      : "bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100";
+
+  const openLabel = locale === "pl" ? "Otwórz" : "Open";
+
   return (
     <a
       href={href}
       target="_blank"
-      className="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm hover:border-indigo-200 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-400/60"
+      rel="noreferrer"
+      className={[
+        "group rounded-3xl border p-5 shadow-sm transition sm:p-7",
+        "hover:-translate-y-0.5 hover:shadow-md",
+        "focus:outline-none focus:ring-4 focus:ring-indigo-300/30",
+        toneCls,
+      ].join(" ")}
     >
-      <div className="flex items-center gap-3">
-        <div className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-50 text-slate-900 dark:bg-slate-800 dark:text-slate-100">
-          {icon}
-        </div>
-        <div>
-          <div className="font-bold text-slate-900 dark:text-slate-100">
-            {label}
+      <div className="flex items-start justify-between gap-4">
+        {/* left */}
+        <div className="flex items-start gap-4 min-w-0">
+          <div
+            className={[
+              "grid h-10 w-10 shrink-0 place-items-center rounded-2xl shadow-sm sm:h-12 sm:w-12",
+              iconCls,
+            ].join(" ")}
+          >
+            {icon}
           </div>
-          <div className="text-sm text-slate-500 dark:text-slate-400">
-            {handle}
-          </div>
-        </div>
-      </div>
 
-      <div className="text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300">
-        <span className="text-sm font-semibold">{localeLabel("→")}</span>
+          <div className="min-w-0">
+            <div className="text-lg font-extrabold text-slate-900 sm:text-xl dark:text-slate-100">
+              {title}
+            </div>
+            <div className="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
+              {handle}
+            </div>
+            <div className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+              {hint}
+            </div>
+          </div>
+        </div>
+
+        {/* right button */}
+        <span onClick={(e) => e.stopPropagation()} className="shrink-0">
+          <span
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold
+                       text-slate-900 transition hover:border-indigo-200 hover:text-indigo-700
+                       dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+          >
+            {openLabel} →
+          </span>
+        </span>
       </div>
     </a>
-  );
-}
-
-// tiny helper so TSX doesn’t complain in SocialRow
-function localeLabel(s: string) {
-  return s;
-}
-
-function StatCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-3xl border border-slate-200 bg-indigo-50/40 p-6 text-center shadow-sm dark:border-slate-800 dark:bg-indigo-500/10">
-      <div className="text-3xl font-extrabold text-indigo-700 dark:text-indigo-300">
-        {value}
-      </div>
-      <div className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-        {label}
-      </div>
-    </div>
-  );
-}
-
-function Field({
-  label,
-  name,
-  placeholder,
-  type,
-  required,
-}: {
-  label: string;
-  name: string;
-  placeholder: string;
-  type: string;
-  required?: boolean;
-}) {
-  return (
-    <label className="grid gap-2">
-      <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-        {label}
-      </span>
-      <input
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        className="h-12 rounded-2xl border border-slate-200 bg-white px-4 text-slate-900 shadow-sm outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200/60 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
-      />
-    </label>
-  );
-}
-
-function TextArea({
-  label,
-  name,
-  placeholder,
-  required,
-}: {
-  label: string;
-  name: string;
-  placeholder: string;
-  required?: boolean;
-}) {
-  return (
-    <label className="grid gap-2">
-      <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-        {label}
-      </span>
-      <textarea
-        name={name}
-        placeholder={placeholder}
-        required={required}
-        rows={6}
-        className="min-h-[160px] resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200/60 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-500/20"
-      />
-    </label>
   );
 }

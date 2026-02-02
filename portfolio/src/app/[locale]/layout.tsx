@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import type { Locale } from "@/i18n/locales";
 import { isLocale } from "@/i18n/locales";
@@ -17,6 +18,7 @@ export default async function LocaleLayout({
     <div>
       <Navbar locale={locale} />
       {children}
+      <Footer />
     </div>
   );
 }

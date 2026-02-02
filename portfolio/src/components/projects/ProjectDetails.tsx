@@ -9,7 +9,7 @@ import {
 import MiroEmbed from "./MiroEmbed";
 import ProjectHighlights from "./ProjectHighlights";
 import ProjectLearnings from "./ProjectLearnings";
-import ProjectVideo from "../helpers/ProjectVide";
+import ProjectVideo from "../helpers/ProjectVideo";
 
 export default function ProjectDetails({
   project,

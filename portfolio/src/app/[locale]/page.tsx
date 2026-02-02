@@ -117,32 +117,8 @@ export default async function Home({
       <AboutSection locale={locale === "pl" ? "pl" : "en"} />
 
       <ContactSection locale={locale} />
-
-      <footer className="mt-10 border-t border-slate-200 py-10 dark:border-slate-800">
-        <Container>
-          <div className="flex flex-col items-start justify-between gap-3 md:flex-row md:items-center">
-            <div className="text-sm muted">
-              © {new Date().getFullYear()} Portfolio
-            </div>
-            <div className="flex gap-3 text-sm">
-              <a
-                className="muted hover:text-indigo-700 dark:hover:text-indigo-300"
-                href="https://github.com/Gitros"
-                target="_blank"
-              >
-                GitHub
-              </a>
-              <a
-                className="muted hover:text-indigo-700 dark:hover:text-indigo-300"
-                href="https://www.linkedin.com/in/jakub-owczarek47/"
-                target="_blank"
-              >
-                LinkedIn
-              </a>
-            </div>
-          </div>
-        </Container>
-      </footer>
     </main>
   );
 }
+
+
