@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Container from "@/components/layout/Container";
-import { skills, type SkillCategoryId, levelLabel } from "@/data/skills";
-import { Code2, Layers3, Palette, Wrench, Sparkles } from "lucide-react";
+import { skills, type SkillCategoryId } from "@/data/skills";
+import { Code2, Layers3, Palette, Wrench } from "lucide-react";
 import TechCard from "../skills/TechCard";
 
 type Locale = "pl" | "en";
@@ -42,18 +42,12 @@ export default function SkillsSection({
     locale === "pl"
       ? "Technologie i narzędzia, z którymi pracuję na co dzień"
       : "Technologies and tools I use day-to-day";
-  const badge = locale === "pl" ? "Stack technologiczny" : "Tech stack";
 
   return (
     <section id="skills" className="py-20">
       <Container>
         {/* header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
-            <Sparkles className="h-4 w-4" />
-            {badge}
-          </div>
-
           <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
             {title}
           </h2>

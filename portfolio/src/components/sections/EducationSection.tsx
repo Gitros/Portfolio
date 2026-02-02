@@ -7,7 +7,6 @@ import {
   type Locale,
   type EducationItem,
 } from "@/data/education";
-import { Sparkles } from "lucide-react";
 
 export default function EducationSection({
   locale,
@@ -17,18 +16,12 @@ export default function EducationSection({
     locale === "pl"
       ? "Moja droga rozwoju - od technikum przez certyfikaty po studia"
       : "My growth journey - from high school through certificates to university";
-  const badge = locale === "pl" ? "Edukacja" : "Education";
 
   return (
     <section id="education" className="py-20">
       <Container>
         {/* header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
-            <Sparkles className="h-4 w-4" />
-            {badge}
-          </div>
-
           <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
             {title}
           </h2>

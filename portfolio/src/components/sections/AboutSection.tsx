@@ -170,12 +170,12 @@ export default function AboutSection({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div className="mt-7 flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6">
+          <div className="mt-7 flex flex-col items-center justify-center gap-4 lg:flex-row lg:flex-wrap lg:gap-6">
             {c.process.map((step, idx) => {
               const Icon = processIcon[step.icon];
               return (
                 <div key={step.title} className="flex items-center gap-4">
-                  <div className="rounded-2xl border border-slate-200 bg-white px-6 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                  <div className="rounded-2xl border border-slate-200 bg-white px-6 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 w-72 h-24 flex items-center lg:w-auto lg:h-auto">
                     <div className="flex items-center gap-3">
                       <span className="grid h-10 w-10 place-items-center rounded-2xl bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300">
                         <Icon className="h-5 w-5" />
@@ -184,7 +184,7 @@ export default function AboutSection({ locale }: { locale: Locale }) {
                         <div className="font-bold text-slate-900 dark:text-slate-100">
                           {step.title}
                         </div>
-                        <div className="text-sm text-slate-600 dark:text-slate-300">
+                        <div className="text-sm text-slate-600 dark:text-indigo-300 dark:text-slate-300">
                           {step.subtitle[locale]}
                         </div>
                       </div>
@@ -192,7 +192,7 @@ export default function AboutSection({ locale }: { locale: Locale }) {
                   </div>
 
                   {idx < c.process.length - 1 && (
-                    <ArrowRight className="hidden h-5 w-5 text-indigo-500 md:block" />
+                    <ArrowRight className="hidden h-5 w-5 text-indigo-500 lg:block" />
                   )}
                 </div>
               );
