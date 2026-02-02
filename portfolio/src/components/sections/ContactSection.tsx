@@ -25,7 +25,7 @@ const t = {
   left: {
     email: { pl: "Email", en: "Email" },
     location: { pl: "Lokalizacja", en: "Location" },
-    socials: { pl: "Social Media", en: "Social Media" },
+    socials: { pl: "Ważne linki!", en: "Important links!" },
     github: { pl: "GitHub", en: "GitHub" },
     linkedin: { pl: "LinkedIn", en: "LinkedIn" },
     responseTime: { pl: "Czas odpowiedzi", en: "Response time" },

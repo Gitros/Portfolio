@@ -1,5 +1,11 @@
 import type { Project } from "@/data/projects";
-import { BookOpen, Users, Workflow, ExternalLink } from "lucide-react";
+import {
+  BookOpen,
+  Users,
+  Workflow,
+  ExternalLink,
+  GithubIcon,
+} from "lucide-react";
 import MiroEmbed from "./MiroEmbed";
 import ProjectHighlights from "./ProjectHighlights";
 import ProjectLearnings from "./ProjectLearnings";
@@ -42,16 +48,27 @@ export default function ProjectDetails({
         <div className="flex flex-wrap gap-3 pt-2">
           {project.links.github && (
             <a
-              className="btn-ghost"
+              className={[
+                "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition",
+                "border-slate-200 bg-white text-slate-800 hover:border-indigo-200 hover:text-indigo-700 hover:shadow-sm hover:scale-[1.03]",
+                "focus:outline-none focus:ring-2 focus:ring-indigo-200/60",
+                "dark:border-white/10 dark:bg-black/20 dark:text-slate-100 dark:hover:bg-white/10 dark:focus:ring-indigo-300/40",
+              ].join(" ")}
               href={project.links.github}
               target="_blank"
             >
+              <GithubIcon className="h-4 w-4" />
               GitHub
             </a>
           )}
           {project.resources?.miro && (
             <a
-              className="btn-ghost inline-flex items-center gap-2"
+              className={[
+                "inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition",
+                "border-slate-200 bg-white text-slate-800 hover:border-indigo-200 hover:text-indigo-700 hover:shadow-sm hover:scale-[1.03]",
+                "focus:outline-none focus:ring-2 focus:ring-indigo-200/60",
+                "dark:border-white/10 dark:bg-black/20 dark:text-slate-100 dark:hover:bg-white/10 dark:focus:ring-indigo-300/40",
+              ].join(" ")}
               href={project.resources.miro}
               target="_blank"
             >

@@ -44,6 +44,18 @@ export const skills: SkillCategory[] = [
     label: { pl: "Języki", en: "Languages" },
     items: [
       {
+        id: "cs",
+        name: "C#",
+        level: "advanced",
+        facts: [
+          { icon: "time", text: { pl: "2+ lata", en: "2+ years" } },
+          {
+            icon: "projects",
+            text: { pl: "3+ projektów", en: "3+ projects" },
+          },
+        ],
+      },
+      {
         id: "ts",
         name: "TypeScript",
         level: "advanced",
@@ -61,18 +73,6 @@ export const skills: SkillCategory[] = [
           {
             icon: "projects",
             text: { pl: "10+ projektów", en: "10+ projects" },
-          },
-        ],
-      },
-      {
-        id: "cs",
-        name: "C#",
-        level: "advanced",
-        facts: [
-          { icon: "time", text: { pl: "2+ lata", en: "2+ years" } },
-          {
-            icon: "projects",
-            text: { pl: "3+ projektów", en: "3+ projects" },
           },
         ],
       },

@@ -15,7 +15,7 @@ export default function ProjectsSection({ locale }: { locale: "pl" | "en" }) {
   const rest = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 scroll-mt-[84px]">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">

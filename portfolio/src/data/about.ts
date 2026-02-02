@@ -54,7 +54,7 @@ export const aboutContent = {
     {
       icon: "code",
       value: "10+",
-      label: { pl: "Projektów zrealizowanych", en: "Projects delivered" },
+      label: { pl: "Zrealizowanych projektów", en: "Delivered projects" },
     },
     {
       icon: "zap",
@@ -64,7 +64,7 @@ export const aboutContent = {
     {
       icon: "trophy",
       value: "5+",
-      label: { pl: "Turniejów zorganizowanych", en: "Tournaments organized" },
+      label: { pl: "Zorganizowanych turniejów", en: "Organized tournaments" },
     },
   ] satisfies AboutStat[],
 

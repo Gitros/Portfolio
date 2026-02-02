@@ -16,10 +16,25 @@ export default function ProjectModal({
 }>) {
   // blokada scrolla tła
   useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const body = document.body;
+
+    const prevOverflow = body.style.overflow;
+    const prevPaddingRight = body.style.paddingRight;
+
+    // szerokość scrollbara = różnica między viewportem a dokumentem
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
+    body.style.overflow = "hidden";
+
+    // dodajemy padding, żeby strona nie przeskoczyła po zniknięciu scrollbara
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
     return () => {
-      document.body.style.overflow = prev;
+      body.style.overflow = prevOverflow;
+      body.style.paddingRight = prevPaddingRight;
     };
   }, []);
 
@@ -40,25 +55,26 @@ export default function ProjectModal({
     : null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      role="presentation"
-      onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      {/* overlay */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* overlay (klik poza modalem zamyka) */}
+      <div
+        className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"
+        role="presentation"
+        onMouseDown={onClose}
+        onTouchStart={onClose}
+      />
 
-      {/* panel */}
+      {/* panel (klik w panel NIE zamyka) */}
       <div
         className="
-          relative w-full max-w-3xl
-          rounded-3xl bg-white shadow-2xl dark:bg-slate-900
-          max-h-[90vh] overflow-hidden
-        "
+        relative w-full max-w-3xl
+        rounded-3xl bg-white shadow-2xl dark:bg-slate-900
+        max-h-[90vh] overflow-hidden
+      "
         role="dialog"
         aria-modal="true"
+        onMouseDown={(e) => e.stopPropagation()}
+        onTouchStart={(e) => e.stopPropagation()}
       >
         {/* HEADER (sticky) */}
         <div className="sticky top-0 z-10 border-b border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">

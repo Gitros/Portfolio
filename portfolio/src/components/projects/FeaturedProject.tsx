@@ -41,7 +41,7 @@ export default function FeaturedProject({
         "hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-100/60",
         "focus:ring-indigo-200/60",
 
-        // ✅ DARK (jak było)
+        // ✅ DARK
         "dark:border-indigo-400/20",
         "dark:bg-gradient-to-br dark:from-indigo-950/70 dark:via-slate-950/60 dark:to-slate-950/40",
         "dark:shadow-xl dark:shadow-indigo-500/10",
