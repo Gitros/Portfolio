@@ -2,14 +2,18 @@
 
 export default function ProjectVideo({
   youtubeId,
-}: Readonly<{ youtubeId: string }>) {
+  fill = false,
+}: Readonly<{ youtubeId: string; fill?: boolean }>) {
+  const containerClass = fill
+    ? "relative h-full w-full overflow-hidden rounded-2xl border border-slate-200 shadow-sm dark:border-slate-800"
+    : "relative aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 shadow-sm dark:border-slate-800";
+
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 shadow-sm dark:border-slate-800">
+    <div className={containerClass}>
       <iframe
         className="absolute inset-0 h-full w-full"
         src={`https://www.youtube.com/embed/${youtubeId}`}
         title="Project demo video"
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       />

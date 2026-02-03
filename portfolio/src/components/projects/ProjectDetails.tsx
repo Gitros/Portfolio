@@ -1,11 +1,5 @@
 import type { Project } from "@/data/projects";
-import {
-  BookOpen,
-  Users,
-  Workflow,
-  ExternalLink,
-  GithubIcon,
-} from "lucide-react";
+import { BookOpen, Workflow, ExternalLink, GithubIcon } from "lucide-react";
 import MiroEmbed from "./MiroEmbed";
 import ProjectHighlights from "./ProjectHighlights";
 import ProjectLearnings from "./ProjectLearnings";
@@ -20,7 +14,27 @@ export default function ProjectDetails({
 }>) {
   const t = (pl: string, en: string) => (locale === "pl" ? pl : en);
 
-  const hasVideo = Boolean(project.links?.video?.trim());
+  const youtubeRaw = project.links?.video?.trim();
+  const youtubeIdOnly = (() => {
+    if (!youtubeRaw) return null;
+    try {
+      const u = new URL(youtubeRaw);
+      if (u.hostname.includes("youtube.com")) return u.searchParams.get("v");
+      if (u.hostname === "youtu.be") return u.pathname.slice(1);
+      return null;
+    } catch {
+      // not a URL → treat as an ID
+      return youtubeRaw;
+    }
+  })();
+
+  const hasVideo = Boolean(youtubeRaw);
+  const videoHref =
+    youtubeRaw && youtubeRaw !== ""
+      ? youtubeRaw.startsWith("http")
+        ? youtubeRaw
+        : `https://www.youtube.com/watch?v=${youtubeRaw}`
+      : null;
 
   return (
     <div className="space-y-10 mt-5">
@@ -88,7 +102,11 @@ export default function ProjectDetails({
           </div>
 
           <div
-            className={hasVideo ? "grid gap-8 lg:grid-cols-2" : "grid gap-8"}
+            className={
+              hasVideo
+                ? "grid gap-8 lg:grid-cols-2 lg:items-stretch"
+                : "grid gap-8"
+            }
           >
             {/* LEWA STRONA – opis */}
             <div>
@@ -123,8 +141,35 @@ export default function ProjectDetails({
 
             {/* PRAWA STRONA – video */}
             {hasVideo && (
-              <div className="lg:sticky lg:top-24">
-                <ProjectVideo youtubeId={project.links!.video!.trim()} />
+              <div className="lg:self-stretch">
+                <div className="hidden lg:block h-full">
+                  {youtubeIdOnly ? (
+                    <ProjectVideo youtubeId={youtubeIdOnly} fill />
+                  ) : null}
+                </div>
+
+                <div className="lg:hidden">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+                    <p className="text-slate-700 dark:text-slate-200">
+                      {t(
+                        "Wideo nie jest osadzone na mniejszych ekranach. Otwórz na YouTube.",
+                        "Video is not embedded on smaller screens. Open on YouTube.",
+                      )}
+                    </p>
+                    {videoHref && (
+                      <div className="mt-3">
+                        <a
+                          href={videoHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm font-semibold text-indigo-700 hover:underline dark:text-indigo-300"
+                        >
+                          {t("Otwórz w YouTube", "Open on YouTube")} →
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -200,10 +245,38 @@ export default function ProjectDetails({
       ) : null}
 
       {project.resources?.miroEmbed && (
-        <MiroEmbed
-          embedUrl={project.resources.miroEmbed}
-          title="Miro – plan / diagramy"
-        />
+        <>
+          <div className="hidden lg:block">
+            <MiroEmbed
+              embedUrl={project.resources.miroEmbed}
+              title="Miro – plan / diagramy"
+            />
+          </div>
+
+          <div className="lg:hidden">
+            <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="mb-2 flex items-center justify-between gap-3">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                  Miro – plan / diagramy
+                </h3>
+                <a
+                  href={project.resources?.miro ?? project.resources?.miroEmbed}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm font-semibold text-indigo-700 hover:underline dark:text-indigo-300"
+                >
+                  {t("Otwórz w Miro", "Open in Miro")} →
+                </a>
+              </div>
+              <p className="text-slate-700 dark:text-slate-200">
+                {t(
+                  "Interaktywny board nie jest osadzony na małych ekranach. Kliknij, aby otworzyć w nowej karcie.",
+                  "Interactive board is not embedded on small screens. Click to open in a new tab.",
+                )}
+              </p>
+            </section>
+          </div>
+        </>
       )}
 
       {project.learnings?.length ? (
